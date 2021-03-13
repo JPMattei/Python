@@ -3,3 +3,21 @@
 
 
 #------LIBRARIES-------------------------------------#
+
+
+
+
+
+
+#---- Frequencies---#
+#Satisfação vs OPERADORA | Frequência por operadora
+
+freq = df['OPERADORA'].value_counts()  #Frequencia absoluta
+freq_relat = (freq / len(df['OPERADORA'])) #Frequencia Relativa
+med_satis = (freq / sum(df['Satisfação'])) #Média de satisfação
+
+result = pd.concat([freq, freq_relat, med_satis], axis = 1 )
+
+result.columns = ['OPERADORA', 'FREQUE_RELAT', 'SATISFAÇAO_AVG']
+
+result.style.format({'FREQUE_RELAT': '{:.2%}','SATISFAÇAO_AVG': '{:.2%}' })
